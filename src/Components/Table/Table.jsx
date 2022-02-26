@@ -1,4 +1,4 @@
-import React,{ useEffect,useState } from 'react';
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -30,35 +30,33 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const CustomizedTable = (props) => {
 
-  const [isDarkMode,seDarkMode] = useState(sessionStorage.getItem('isDarkMode'));
-
   {/*const Search = (prop) =>{
     prop.filter((row)=>row.values[1].toLowerCase().includes(search)).map((filteredRow) => (
       console.log(filteredRow)
     ))
   }
   */}
-  const search = props.search;
+  const search = props.search.toLowerCase();
   var rows = props.rows;
 
   return (
     <>
-    <TableContainer component={Paper} style={{backgroundColor: isDarkMode ? 'black' : null}}>
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
         <TableRow>
-          {props.columns.map((column) => (<StyledTableCell style={{color: isDarkMode? 'yellow' : null}}  align="center" 
+          {props.columns.map((column) => (<StyledTableCell align="center" 
           key={column.index} >{column.col}</StyledTableCell>) )} 
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.filter((row)=>row.values[1].toLowerCase().includes(search)).map((filteredRow) => (
             <StyledTableRow key={filteredRow.values} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-              <StyledTableCell style={{color: isDarkMode? 'white' : null}} align="center" >
+              <StyledTableCell align="center" >
                 {filteredRow.name}
               </StyledTableCell>
               {filteredRow.values.map((value,index) => (
-              <StyledTableCell style={{color: isDarkMode? 'white' : null}} key={index} align="center" >
+              <StyledTableCell key={index} align="center" >
                 {value}
               </StyledTableCell>
               ))}

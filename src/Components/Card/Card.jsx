@@ -13,10 +13,10 @@ import { Link } from 'react-router-dom';
 const Card = (props) =>{
 
   return(
-    <Box sx={{backgroundColor:'white', maxWidth:320, borderRadius:5,marginTop:2,marginBottom:5,
+    <Box sx={{backgroundColor:'white', maxWidth:320, borderRadius:5,
     boxShadow: '4px 3px 5px 1px #969696'}}>
     <React.Fragment>
-      <CardContent style={{backgroundColor:'white', borderRadius:5}}>
+      <CardContent style={{backgroundColor:'white',borderRadius:15}}>
         <Typography variant="h5" component="div" fontFamily='roboto'>
           Bienvenido!
         </Typography>

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -12,11 +12,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import HelpIcon from '@mui/icons-material/Help';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import Brightness2Icon from '@mui/icons-material/Brightness2';
 import { Link } from 'react-router-dom';
 import Logo from '../../Images/logosmall.jpg';
-import LogoBlack from '../../Images/logosmallblack.jpg';
-import Brightness5Icon from '@mui/icons-material/Brightness5';
 
 export default function TemporaryDrawer() {
     const [state, setState] = React.useState({
@@ -67,35 +64,11 @@ export default function TemporaryDrawer() {
             text:'Cerrar sesión',
             route: '/',
         },
-        {
-          index:5,
-          icon:<Brightness2Icon/>,
-          text: 'Modo oscuro',
-          route:'',
-        },
     ]
-
-    const lightModeIcon = <Brightness5Icon></Brightness5Icon>;
-
-    const [isDarkMode,setDarkMode] = useState(false);
 
     const handleClick2 = () =>{
         sessionStorage.clear();
     }
-
-    const handleClick3 = () =>{
-      setDarkMode(true);
-      sessionStorage.setItem('isDarkMode',true);
-
-      {/* useEffect(() => {
-        //Runs on every render
-        const mode = sessionStorage.getItem('isDarkMode');
-        setDarkMode(mode);
-      },[isDarkMode]);
-    */}
-    }
-  
-    
   
     const list = (anchor) => (
       <Box
@@ -122,18 +95,20 @@ export default function TemporaryDrawer() {
           {icons2.map((index) => (
             <Link  key={index.text} style={{textDecoration:'none',color:'black'}}
              to={index.route}>
-            <ListItem button onClick={index.index==4 ? handleClick2 : (index.index==5 ? (isDarkMode==false ? handleClick3 : null ) : null) }>
+            <ListItem button onClick={index.index===4 ? handleClick2 : null }>
               <ListItemIcon>
-                { (isDarkMode && index.index==5) ? lightModeIcon : index.icon}
+                {index.icon}
               </ListItemIcon>
-              <ListItemText primary={ (isDarkMode && index.index==5) ? 'Modo claro' : index.text} />
+              <ListItemText primary={index.text} />
             </ListItem>
             </Link>
           ))}
         </List>
-        <img src={ Logo} style={{maxWidth:'210px',marginTop:'55px'}}></img>
+        <img alt="logo" src={ Logo} style={{maxWidth:'210px',marginTop:'55px'}}></img>
         <div  style={{padding:'10px',margin:'auto'}} >
-        <h4 style={{fontFamily:'roboto',fontWeight:'bold' }}>Cooperativa agropecuaria unión y progreso LTDA.</h4>
+        <h4 style={{fontFamily:'roboto',fontWeight:'bold' }}
+        >Cooperativa agropecuaria unión y progreso LTDA.
+        </h4>
         </div>
       </Box>
     );

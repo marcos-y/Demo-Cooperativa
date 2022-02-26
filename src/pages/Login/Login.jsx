@@ -16,7 +16,7 @@ const Login = () =>{
     }
 
     const handleClick = () =>{
-      if((userEmail=='marcos@gmail') && (password=='123')){        
+      if((userEmail==='marcos@gmail') && (password==='123')){        
         sessionStorage.setItem('userEmail', userEmail);
         sessionStorage.setItem('password', password);
         sessionStorage.setItem('isAuth',true);
@@ -27,7 +27,7 @@ const Login = () =>{
     }
 
 return(
-    <div style={{display:'flex',justifyContent:'center',backgroundColor:'#F2F2F2'}}>
+    <div style={{display:'flex',justifyContent:'center',backgroundColor:'#F2F2F2',padding:'10px'}}>
         <Card password={password} userEmail={userEmail}
         handleChangeUser={handleChangeUser} onClick={handleClick} setPass={setPass}>
         </Card>

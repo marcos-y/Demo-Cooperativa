@@ -133,7 +133,6 @@ const EstadoCuentas = () =>{
         },
     ]
 
-    const isDarkMode = sessionStorage.getItem('isDarkMode');
     const [search,setSearch] = useState('');
     const handleChangeSearch = (event) => setSearch(event.target.value);
 
@@ -141,7 +140,7 @@ const EstadoCuentas = () =>{
 
         <>
         <div style={{marginTop:'10px'}}>
-            <Drawer style={{ backgroundColor: isDarkMode ? 'black' : null}}></Drawer>
+            <Drawer></Drawer>
             <TextfieldIcon search={search} handleChangeSearch={handleChangeSearch}></TextfieldIcon>
             <h2 style={{float:'right',marginRight:'10px'}}>Autorizaciones</h2>
         </div>
